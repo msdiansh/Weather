@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>What's the Weather</title>    
+        <link rel="shortcut icon" type="image/x-icon" href="./weather-icon.png">
+        
+        <meta name="description" content="">
+        <meta name="keywords" content="weather, rain, sunny, windy, temperature">
+        <link rel="stylesheet" type="text/css" href="./weather.css">
+        <script src="https://kit.fontawesome.com/8ac0036aeb.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body onload="operation('Delhi')">
+        <div class="header" id="myHeader">
+            <div class="header-left">
+                <i class="fas fa-solid fa-cloud-sun-rain"></i>
+                <h1 id="myName">What's the Weather</h1>
+            </div>
+            <div class="header-right">
+                <button id="l-find" onclick="search_appear(this)"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div id="loc-name-entry">
+                    <input id="l-space" type="text" required> 
+                    <button id="l-button" onclick="get_location()"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                </div>
+            </div>
+        </div>
+        <div id = "alert"></div>
+        <div class="bg-text">
+            <div class="partview">
+                <div class="left">
+                    <h3 class="sub-head location-name"></h3>
+                    <p class="day"></p>
+                    <div class="temp">
+                        <div class="temperature-characteristics">
+                            <div id="temperature"><i class="fas fa-solid fa-cloud-sun"></i></div>
+                            <div id="characteristics"></div>
+                        </div>
+                        <div class="other-details">
+                            <div id="sunrise-sunset">
+                                <i class="fas fa-solid fa-sun"></i>
+                                <ul type="none">
+                                    <li id="ss-op"></li>
+                                    <li id="ss-op"></li>
+                                </ul>
+                            </div>
+                            <div id="high-low-temp">
+                                <i class="fas fa-solid fa-temperature-high"></i>
+                                <ul type="none">
+                                    <li id="hl-op"></li>
+                                    <li id="hl-op"></li>
+                                </ul>
+                            </div>
+                            <div id="wind_dir">
+                                <i class="fa-solid fa-wind"></i>
+                                <ul type="none">
+                                    <li id="wd-op"></li>
+                                    <li id="wd-op"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="same_day_prediction">
+                        <div class="prediction_container">
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                            <div class="prediction" id="last_pred">
+                                <p class="prediction_date"></p>
+                                <p class="prediction_time"></p>
+                                <div class="prediction_weather_sign"></div>
+                                <div class="prediction_temp"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3 class="sub-head">Weekly Forecast</h3>
+                    <div class="wf-container">
+                        <div class="weekly_prediction">
+                            <div class="weekly_left">
+                                <span class="weekly_prediction_icon"><i class="fa-solid fa-calendar-days"></i></span>
+                                <p class="weekly_prediction_date"></p>
+                            </div>
+                            <div class="weekly_right">
+                                <div class="weekly_day">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                                <div class="weekly_night">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_prediction">
+                            <div class="weekly_left">
+                                <span class="weekly_prediction_icon"><i class="fa-solid fa-calendar-days"></i></span>
+                                <p class="weekly_prediction_date"></p>
+                            </div>
+                            <div class="weekly_right">
+                                <div class="weekly_day">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                                <div class="weekly_night">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_prediction">
+                            <div class="weekly_left">
+                                <span class="weekly_prediction_icon"><i class="fa-solid fa-calendar-days"></i></span>
+                                <p class="weekly_prediction_date"></p>
+                            </div>
+                            <div class="weekly_right">
+                                <div class="weekly_day">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                                <div class="weekly_night">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_prediction" id="last_weekly_prediction">
+                            <div class="weekly_left">
+                                <span class="weekly_prediction_icon"><i class="fa-solid fa-calendar-days"></i></span>
+                                <p class="weekly_prediction_date"></p>
+                            </div>
+                            <div class="weekly_right">
+                                <div class="weekly_day">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                                <div class="weekly_night">
+                                    <p class="weekly_prediction_time"></p>
+                                    <div class="weekly_prediction_weather_sign"></div>
+                                    <div class="weekly_prediction_temp"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info">
+                <h3 class="sub-head">Other Information</h3>
+                <div class="air_quality_index">Air Quality Index:&nbsp;<span class="air_quality_index_value"></span></div>
+                <div class="air_component_chart">
+                    <div class="air_component"><span class="name">Carbon Monoxide</span><span class="value"></span><span class="rating"></span></div>
+                    <div class="air_component"><span class="name">Nitrogen Dioxide</span><span class="value"></span><span class="rating"></span></div>
+                    <div class="air_component"><span class="name">Ozone</span><span class="value"></span><span class="rating"></span></div>
+                    <div class="air_component"><span class="name">Sulphur Dioxide</span><span class="value"></span><span class="rating"></span></div>
+                    <div class="air_component"><span class="name">Fine Particle Matter</span><span class="value"></span><span class="rating"></span></div>
+                    <div class="air_component" id="last_air_component"><span class="name">Coarse Particle Matter</span><span class="value"></span><span class="rating"></span></div>
+                </div>
+            </div>
+        </div> 
+        
+        <script src="./weather.js"></script>
+    </body>
+</html>
